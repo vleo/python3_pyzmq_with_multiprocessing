@@ -9,7 +9,7 @@ def worker():
     work_receiver.connect("tcp://127.0.0.1:5557")
 
     for task_nbr in range(10000000):
-        message = work_receiver.recv()
+        message = work_receiver.recv_pyobj()
 
     sys.exit(1)
 
@@ -19,7 +19,7 @@ def main():
     ventilator_send = context.socket(zmq.PUSH)
     ventilator_send.bind("tcp://127.0.0.1:5557")
     for num in range(10000000):
-        ventilator_send.send("MESSAGE")
+        ventilator_send.send_pyobj("MESSAGE")
 
 if __name__ == "__main__":
     start_time = time.time()
