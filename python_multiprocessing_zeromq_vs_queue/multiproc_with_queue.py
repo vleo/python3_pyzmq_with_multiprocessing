@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import sys
 import time
 from  multiprocessing import Process, Queue
@@ -9,7 +11,7 @@ def worker(q):
         message = q.get()
 
     sys.exit(1)
- 
+
 def main():
     send_q = Queue()
     Process(target=worker, args=(send_q,)).start()
@@ -18,13 +20,14 @@ def main():
 
 if __name__ == "__main__":
     start_time = time.time()
-    print(start_time, NNN)
     main()
     end_time = time.time()
     duration = end_time - start_time
     msg_per_sec = NNN / duration
 
-
+    print("Messages: {:10d}".format(NNN))
+    print("Duration: {:10.1f} sec".format(duration))
+    print("Rate:     {:10.1f} msg/sec".format(msg_per_sec))
 
 # this yields 97 927 messages/sec on
 # 8 core

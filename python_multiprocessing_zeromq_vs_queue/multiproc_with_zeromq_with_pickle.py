@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import sys
 import zmq
 from  multiprocessing import Process
@@ -31,7 +33,9 @@ if __name__ == "__main__":
     duration = end_time - start_time
     msg_per_sec = NNN / duration
 
-    print("Duration: {}".format(duration))
-    print("Messages Per Second: {}".format(msg_per_sec))
+    print("Messages: {:10d}".format(NNN))
+    print("Duration: {:10.1f} sec".format(duration))
+    print("Rate:     {:10.1f} msg/sec".format(msg_per_sec))
+
 #Duration: 2.77
 #Messages Per Second: 180 263.06
